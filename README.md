@@ -17,7 +17,7 @@ Copy this entire directory of files into your Wireshark "Personal Plugins" folde
 
 **Tip**: to find out where your Personal Plugins folder is, open Wireshark and go to **Help->About Wireshark** and it will be listed in the **Folders** tab. You may need to create the folder the first time.
 
-Then start Wireshark, open a file with your Protobuf packets, select one of those packets, right-click and select "Decode as..." and scroll down to the name of your outer-most Message type. To make this happen all the time for a UDP port, go to "Edit->Preferences->Protocols", fnd your outer-most Message type, and put the UDP port number in the field shown (or a range of port numbers if it can be more than one port).
+Then start Wireshark, open a file with your Protobuf packets, select one of those packets, right-click and select "Decode as..." and scroll down to the name of your outer-most Message type. To make this happen all the time for a UDP port, go to "Edit->Preferences->Protocols", find your outer-most Message type, and put the UDP port number in the field shown (or a range of port numbers if it can be more than one port).
 
 The "outer-most Message type" is the Protobuf 'message' identifier name in your .proto file, but in all capital letters. You'll see that every Protobuf 'message' idenfitier name creates a new protocol in Wireshark; you can use one or all of them a the outer-most Message type. (see details in the 'How it works' section below)
 
