@@ -1,3 +1,5 @@
+require("mobdebug").start()
+
 -- latest development release of Wireshark supports plugin version information
 if set_plugin_info then
     local my_info = {
@@ -41,7 +43,6 @@ _G['protbuf_dissector'] = {
 
 -- help wireshark find our modules
 package.prepend_path("modules")
-
 
 -- load our settings
 local Settings = require "settings"
