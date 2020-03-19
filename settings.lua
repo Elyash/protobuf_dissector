@@ -47,7 +47,7 @@ local Settings = {
     },
 
     -- current debug level; default disabled
-    debug_level = 0,
+    debug_level = 2,
 
     -- debug printers for different debug levels, by default they
     -- do nothing; but this will be updated later
@@ -98,7 +98,7 @@ end
 local function resetDebugLevel()
     if Settings.debug_level > Settings.dlevel.DISABLED then
         Settings.dprint = function(...)
-            info( generateOutput( { "Protobuf-Debug:", ... } ) )
+            debug.debug( generateOutput( { "Protobuf-Debug:", ... } ) )
         end
 
         if Settings.debug_level > Settings.dlevel.LEVEL_1 then
