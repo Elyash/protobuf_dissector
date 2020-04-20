@@ -71,6 +71,10 @@ function FieldStatement.parse(st, oneof_name)
     if oneof_name then
         dassert(#st >= 4, "Field statement inside ONEOF is malformed: not 4 or more tokens")
         idx = 1
+    -- No label required in the start of field statement
+    elseif st[1].ptype == "NATIVE" or (st[1].ptype == "STATEMENT" and st[1].category == "VARIABLE" and st[1].ttype == "IDENTIFIER") then
+        dassert(#st >= 4, "NATIVE or STATEMENT field statement is malformed: not 4 or more tokens")
+        idx = 1
     else
         dassert(st[1].ptype == "LABEL", "Token ptype is not LABEL")
         dassert(#st >= 5, "LABEL field statement is malformed: not 5 or more tokens")
@@ -119,6 +123,9 @@ function FieldStatement.new(namespace, st, oneof_name)
         -- this Field occurs in a oneof statement
         new_class["label"] = "ONEOF"
         new_class["oneof_name"] = oneof_name
+    -- The defalut label is "optional"
+    elseif st[1].ptype == "NATIVE" then
+        new_class["label"] = "OPTIONAL"
     else
         new_class["label"] = st[1].ttype
     end

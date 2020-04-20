@@ -309,14 +309,6 @@ Syntax.token_info = {
             wtype = "START_GROUP",
         },
         {
-            value = "required",
-            ptype = "LABEL",
-        },
-        {
-            value = "optional",
-            ptype = "LABEL",
-        },
-        {
             value = "repeated",
             ptype = "LABEL",
         },

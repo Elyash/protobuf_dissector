@@ -76,6 +76,11 @@ function AstFactory:dispatchBodyStatement(namespace, statement_table)
 
     local ttype, ptype = token.ttype, token.ptype
 
+    -- if no label specifeid, pretend the defalut label
+    if ptype == "NATIVE" or (ptype == "STATEMENT" and ttype == "IDENTIFIER") then
+        ttype, ptype = "OPTIONAL", "LABEL"
+    end
+
     if self.dispatch_body_tbl[ttype] then
         return self.dispatch_body_tbl[ttype].new(namespace, statement_table)
     elseif self.dispatch_body_tbl[ptype] then
